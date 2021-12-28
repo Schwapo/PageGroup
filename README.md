@@ -13,8 +13,7 @@ is not in an editor folder or it will be removed during build, causing errors.
 
 ### Parameters
 
-> Default Values for all of the parameters can be set in the PageGroupPreferences ScriptableObject that will automatically be created inside your main Assets folder.
-> The location of the ScriptableObject can be changed after it was created.
+> Default Values for all of the parameters can be set in the PageGroupPreferences ScriptableObject that will automatically be created inside the PageGroup folder.
 
 > All parameters use [ValueResolvers] which means that they are strings that get resolved to a specific value using Odin's ValueResolver system.
 > If you want to learn more about them, have a look at this [tutorial]. All of the types that you see listed here are the types that the string needs to resolve to.
