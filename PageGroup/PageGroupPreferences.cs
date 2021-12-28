@@ -39,6 +39,22 @@ public class PageGroupPreferences : GlobalConfig<PageGroupPreferences>
     [InfoBox("You can hold down <b>Alt</b> while clicking on the group label/dropdown to expand and collapse all elements inside of it recursively.\n\n<b>Alt + Left Click</b> to expand\n<b>Alt + Right Click</b> to collapse", InfoMessageType.Info)]
     public bool EnableExpandAndCollapseShortcut = true;
 
+    protected override void OnConfigAutoCreated()
+    {
+        #if UNITY_EDITOR
+
+        var scriptPath = UnityEditor.AssetDatabase.GetAssetPath(
+            UnityEditor.MonoScript.FromScriptableObject(this));
+
+        var targetFolder = System.IO.Path.GetDirectoryName(scriptPath);
+
+        UnityEditor.AssetDatabase.MoveAsset(
+            UnityEditor.AssetDatabase.GetAssetPath(this),
+            System.IO.Path.Combine(targetFolder, "PageGroupPreferences.asset"));
+
+        #endif
+    }
+
     #region Preview
     #if UNITY_EDITOR
 
